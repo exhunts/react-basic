@@ -4,6 +4,7 @@ import "./app.scss"
 import TodoHeader from '../todo-header'
 import TodoSearchBar from '../todo-search-bar'
 import TodoItems from '../todo-items/todo-items'
+import TodoAddTaskBar from '../todo-add-task-bar';
 
 const App = () => {
   const todoData = [
@@ -18,6 +19,7 @@ const App = () => {
         <TodoHeader />
         <TodoSearchBar />
         <TodoItems />
+        <TodoAddTaskBar />
       </div>
     </div>
   )

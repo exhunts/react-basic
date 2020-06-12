@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./todo-search-bar.scss"
 
+
 export default class TodoSearchBar extends Component {
   isAllButtonActive = true
   isActiveButtonActive = false
