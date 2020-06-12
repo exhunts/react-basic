@@ -1,8 +1,9 @@
 import React from 'react';
-import TodoList from '../todo-list';
-import AppHeader from '../app-header';
-import SearchPanel from '../search-panel';
 import "normalize.css"
+import "./app.scss"
+import TodoHeader from '../todo-header'
+import TodoSearchBar from '../todo-search-bar'
+import TodoItems from '../todo-items/todo-items'
 
 const App = () => {
   const todoData = [
@@ -12,11 +13,13 @@ const App = () => {
   ]
 
   return (
-    <>
-      <AppHeader />
-      <SearchPanel />
-      <TodoList todos={todoData} />
-    </>
+    <div className="container">
+      <div className="todo">
+        <TodoHeader />
+        <TodoSearchBar />
+        <TodoItems />
+      </div>
+    </div>
   )
 }
 
