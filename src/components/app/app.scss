@@ -1,6 +1,12 @@
 html {
   box-sizing: border-box;
+  // outline: none !important;
 }
+
+// * {
+//   outline: 0;
+//   border: none;
+// }
 
 *,
 *::after,
@@ -36,4 +42,8 @@ button {
   margin-top: 50px;
   transform: translateX(-50%);
   max-width: 400px;
+}
+
+*:focus {
+  outline: none;
 }

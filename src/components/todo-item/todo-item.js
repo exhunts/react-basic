@@ -23,7 +23,6 @@ export default class TodoItem extends Component {
     })
   }
 
-
   render() {
     const { label, onDeleted } = this.props
     const { done, important } = this.state
@@ -31,7 +30,6 @@ export default class TodoItem extends Component {
       color: important ? 'steelblue' : 'black',
       fontWeight: important ? 'bold' : 'normal'
     }
-
 
     return (
       <>
