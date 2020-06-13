@@ -1,0 +1,11 @@
+.todo__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.todo__app-name,
+.todo__todo-task-num,
+.todo__todo-task-done {
+  font-weight: bolder;
+}

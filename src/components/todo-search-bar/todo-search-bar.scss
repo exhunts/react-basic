@@ -1,0 +1,12 @@
+.todo__search-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  .todo__search-input {
+    width: 70%;
+    padding-left: 10px;
+  }
+  .todo__buttons-group {
+    display: flex;
+  }
+}

@@ -1,12 +1,6 @@
 html {
   box-sizing: border-box;
-  // outline: none !important;
 }
-
-// * {
-//   outline: 0;
-//   border: none;
-// }
 
 *,
 *::after,
@@ -39,11 +33,7 @@ button {
 
 .todo {
   margin-left: 50%;
-  margin-top: 50px;
+  margin-top: 30px;
   transform: translateX(-50%);
   max-width: 400px;
-}
-
-*:focus {
-  outline: none;
 }

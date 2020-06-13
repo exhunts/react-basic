@@ -1,0 +1,29 @@
+.todo__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 5px;
+  padding-left: 16px;
+  border: 1px solid rgb(105, 105, 105);
+  border-radius: 50px;
+  .todo__delete-task {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  .todo__delete-task:hover {
+    background-color: chartreuse;
+  }
+  .todo__task-done {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  .todo__task-done:hover {
+    background-color: cornflowerblue;
+  }
+}
+
+.todo__item + .todo__item {
+  margin-top: 5px;
+}
