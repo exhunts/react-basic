@@ -1,3 +1,11 @@
 .todo__items {
   margin-bottom: 10px;
 }
+
+.todo__items:active {
+  outline: none;
+}
+
+.done {
+  text-decoration: line-through;
+}

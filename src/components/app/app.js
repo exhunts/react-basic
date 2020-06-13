@@ -18,7 +18,10 @@ const App = () => {
       <div className="todo">
         <TodoHeader />
         <TodoSearchBar />
-        <TodoItems />
+        <TodoItems
+          todos={todoData}
+          onDeleted={(id) => console.log('del', id)}
+        />
         <TodoAddTaskBar />
       </div>
     </div>
