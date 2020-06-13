@@ -5,7 +5,14 @@ import './todo-task-list.scss'
 export default class TodoTaskList extends Component {
   createItems() {
     return this.props.todoData.map(item => {
-      return <TodoListItem  {...item} />
+      const { label, important, id } = item
+      return (
+        <TodoListItem
+          key={id}
+          label={label}
+          important={important}
+        />
+      )
     })
   }
 
