@@ -1,31 +1,40 @@
-import React from 'react';
-import "normalize.css"
-import "./app.scss"
+import React, { Component } from 'react';
 import TodoHeader from '../todo-header'
 import TodoSearchBar from '../todo-search-bar'
 import TodoItems from '../todo-items/todo-items'
 import TodoAddTaskBar from '../todo-add-task-bar';
+import "normalize.css"
+import "./app.scss"
 
-const App = () => {
-  const todoData = [
+export default class App extends Component {
+  state = {
+    activeTaskNum: 0,
+    doneTaskNum: 0
+  }
+
+  todoData = [
     { label: 'Drink Coffee', important: false, id: 1 },
     { label: 'Make Awesome App', important: true, id: 2 },
     { label: 'Have a lunch', important: false, id: 3 }
   ]
 
-  return (
-    <div className="container">
-      <div className="todo">
-        <TodoHeader />
-        <TodoSearchBar />
-        <TodoItems
-          todos={todoData}
-          onDeleted={(id) => console.log('del', id)}
-        />
-        <TodoAddTaskBar />
-      </div>
-    </div>
-  )
-}
+  delTaskByID() {
+    console.log('delTaskByID()')
+  }
 
-export default App
+  render() {
+    return (
+      <div className="container">
+        <div className="todo">
+          <TodoHeader />
+          <TodoSearchBar />
+          <TodoItems
+            todos={this.todoData}
+            onDeleted={(id) => console.log('del', id)}
+          />
+          <TodoAddTaskBar />
+        </div>
+      </div>
+    )
+  }
+}
