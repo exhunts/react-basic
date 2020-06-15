@@ -15,25 +15,69 @@ export default class App extends Component {
       { label: 'Make Awesome App', important: false, done: false, id: 2 },
       { label: 'Have a lunch', important: false, done: false, id: 3 },
       { label: 'Lunch', important: false, done: false, id: 4 }
-    ]
+    ],
+    tasksAmount: 4,
+    tasksDoneAmount: 0,
+    sortMode: 'all'
+  }
+
+  // sortedTodoList = this.state.todoData
+
+
+  sortTodoListBy = (sortModeName) => {
+    this.setState({
+      sortMode: sortModeName
+    })
+  }
+
+  filterItems = (todoData, sortMode) => {
+    switch (sortMode) {
+      case 'all':
+        return todoData
+
+      case 'active':
+        return todoData.filter(item => !item.done)
+
+      case 'done':
+        return todoData.filter(item => item.done)
+
+      default:
+        return todoData
+    }
+  }
+
+
+  updateDoneAmount = () => {
+    this.setState((state) => {
+      return {
+        tasksDoneAmount: (state.todoData.filter(item => item.done === true)).length
+      }
+    })
   }
 
   delItemByID = (id) => {
     this.setState((state) => {
       const idx = state.todoData.findIndex(item => item.id === id)
-      const todoData = [
+      const newTodoData = [
         ...state.todoData.slice(0, idx),
         ...state.todoData.slice(idx + 1)
       ]
-      return { todoData }
+      return {
+        todoData: newTodoData,
+        tasksAmount: newTodoData.length
+      }
     })
+    this.updateDoneAmount()
+
   }
 
   addItemByLabel = (label) => {
     this.setState((state) => {
       const newItem = this._createItemByLabel(label)
+      const newTodoData = [...state.todoData, newItem]
       return {
-        todoData: [...state.todoData, newItem]
+        todoData: newTodoData,
+        tasksAmount: newTodoData.length
       }
     })
   }
@@ -44,6 +88,7 @@ export default class App extends Component {
         todoData: this._toggleProperty(state.todoData, id, 'done')
       }
     })
+    this.updateDoneAmount()
   }
 
   toggleImportantByID = (id) => {
@@ -75,13 +120,23 @@ export default class App extends Component {
   }
 
   render() {
+    const visibleItems = this.filterItems(this.state.todoData, this.state.sortMode)
+
     return (
-      <div className="container">
+      <div className="container" >
         <div className="todo">
-          <TodoHead />
-          <TodoSearchBar />
+          <TodoHead
+            tasksAmount={this.state.tasksAmount}
+            tasksDoneAmount={this.state.tasksDoneAmount}
+          />
+          <TodoSearchBar
+            sortMode={this.state.sortMode}
+            sortTodoListBy={this.sortTodoListBy}
+          />
           <TodoTaskList
-            todoData={this.state.todoData}
+            // todoData={this.state.todoData}
+            todoData={visibleItems}
+
             delItemByID={this.delItemByID}
             toggleDoneByID={this.toggleDoneByID}
             toggleImportantByID={this.toggleImportantByID}
