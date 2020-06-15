@@ -2,32 +2,15 @@ import React, { Component } from 'react'
 import './todo-list-item.scss'
 
 export default class TodoListItem extends Component {
-  state = {
-    isTaskDone: false,
-    isTaskImportant: false
-  }
-
-  toggleDone = () => {
-    this.setState((state) => ({
-      isTaskDone: state.isTaskDone === true ? false : true
-    }))
-  }
-
-  toggleImportant = () => {
-    this.setState((state) => ({
-      isTaskImportant: state.isTaskImportant === true ? false : true
-    }))
-  }
-
   render() {
-    const { label, delItemByID } = this.props
+    const { label, delItemByID, important, done } = this.props
     let itemStyle = ''
 
-    if (this.state.isTaskImportant) {
+    if (important) {
       itemStyle += ' important'
     }
 
-    if (this.state.isTaskDone) {
+    if (done) {
       itemStyle += ' done'
     }
 
@@ -35,7 +18,7 @@ export default class TodoListItem extends Component {
       <li className="todo__item">
         <span
           className={itemStyle}
-          onClick={this.toggleDone}
+          onClick={this.props.toggleDoneByID}
         >
           {label}
         </span>
@@ -50,7 +33,7 @@ export default class TodoListItem extends Component {
             className="todo__task-done"
             src="images/danger.svg"
             alt="exclamation"
-            onClick={this.toggleImportant}
+            onClick={this.props.toggleImportantByID}
           />
         </div>
       </li>
