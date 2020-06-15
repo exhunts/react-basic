@@ -9,8 +9,10 @@ export default class TodoTaskList extends Component {
       return (
         <TodoListItem
           key={id}
+          id={id}
           label={label}
           important={important}
+          delItemByID={() => this.props.delItemByID(id)}
         />
       )
     })

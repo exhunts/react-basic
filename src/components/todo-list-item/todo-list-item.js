@@ -20,7 +20,7 @@ export default class TodoListItem extends Component {
   }
 
   render() {
-    const { label } = this.props
+    const { label, delItemByID } = this.props
     let itemStyle = ''
 
     if (this.state.isTaskImportant) {
@@ -40,7 +40,12 @@ export default class TodoListItem extends Component {
           {label}
         </span>
         <div className="todo__item-control">
-          <img className="todo__delete-task" src="images/trash.svg" alt="trash" />
+          <img
+            className="todo__delete-task"
+            src="images/trash.svg"
+            alt="trash"
+            onClick={delItemByID}
+          />
           <img
             className="todo__task-done"
             src="images/danger.svg"
