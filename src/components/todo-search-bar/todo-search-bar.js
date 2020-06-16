@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 import "./todo-search-bar.scss"
 
 export default class TodoSearchBar extends Component {
+  state = {
+    term: ''
+  }
+
+  onTermChange = (e) => {
+    const { onSearchChange = () => { } } = this.props
+    this.setState({
+      term: e.target.value
+    })
+
+    onSearchChange(e.target.value)
+  }
+
   render() {
     let allState = "todo__display-all-tasks"
     let activeState = "todo__display-all-tasks"
@@ -28,6 +41,8 @@ export default class TodoSearchBar extends Component {
           className="todo__search-input"
           type="text"
           placeholder="type to search"
+          value={this.state.term}
+          onChange={this.onTermChange}
         />
         <div className="todo__buttons-group">
           <button

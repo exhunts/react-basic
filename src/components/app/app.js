@@ -18,11 +18,9 @@ export default class App extends Component {
     ],
     tasksAmount: 4,
     tasksDoneAmount: 0,
-    sortMode: 'all'
+    sortMode: 'all',
+    term: ''
   }
-
-  // sortedTodoList = this.state.todoData
-
 
   sortTodoListBy = (sortModeName) => {
     this.setState({
@@ -46,6 +44,9 @@ export default class App extends Component {
     }
   }
 
+  filterBySearch = (dataArray, searchTerm) => {
+    return dataArray.filter(item => item.label.indexOf(searchTerm) > -1)
+  }
 
   updateDoneAmount = () => {
     this.setState((state) => {
@@ -119,8 +120,15 @@ export default class App extends Component {
     }
   }
 
+  onSearchChange = (newTerm) => {
+    this.setState({
+      term: newTerm
+    })
+  }
+
   render() {
-    const visibleItems = this.filterItems(this.state.todoData, this.state.sortMode)
+    // const visibleItems = this.filterItems(this.state.todoData, this.state.sortMode)
+    const visibleItems = this.filterBySearch(this.filterItems(this.state.todoData, this.state.sortMode), this.state.term)
 
     return (
       <div className="container" >
@@ -132,6 +140,7 @@ export default class App extends Component {
           <TodoSearchBar
             sortMode={this.state.sortMode}
             sortTodoListBy={this.sortTodoListBy}
+            onSearchChange={this.onSearchChange}
           />
           <TodoTaskList
             // todoData={this.state.todoData}
